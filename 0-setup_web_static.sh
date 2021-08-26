@@ -3,7 +3,7 @@
 apt update -y
 apt install nginx -y
 mkdir -p /data/web_static/releases/test/
-mkdir /data/web_static/shared/
+mkdir -p /data/web_static/shared/
 printf %s "<html>
   <head>
   </head>
