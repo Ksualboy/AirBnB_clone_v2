@@ -29,14 +29,14 @@ def do_deploy(archive_path):
 
     try:
         put(archive_path, '/tmp')
-        folder_path = "/data/web_static/releases/"+archive_path[9:-4]+"/"
-        run('mkdir -p '+folder_path)
-        run('tar -zxvf /tmp/'+archive_path[9:]+' -C '+folder_path)
-        run('rm /tmp/'+archive_path[9:])
-        run('mv '+folder_path+"web_static/* "+folder_path)
-        run('rm -rf '+folder_path+'web_static')
-        run('rm -rf /data/web_static/current')
-        run('ln -sf '+folder_path+' /data/web_static/current')
+        folder_path = "/data/web_static/releases/"+archive_path[9:-4]
+        run("mkdir -p " + folder_path)
+        run("tar zxvf /tmp/" + archive_path[9:] + " -C " + folder_path)
+        run("mv " + folder_path + "/web_static/* " + folder_path)
+        run("rm -rf " + folder_path + "/web_static/")
+        run("rm -rf /tmp/" + archive_path[9:])
+        run("rm /data/web_static/current")
+        run("ln -sf " + folder_path + " /data/web_static/current")
         return (True)
     except:
         return (False)
