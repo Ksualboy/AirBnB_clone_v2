@@ -23,17 +23,17 @@ def do_pack():
     except:
         return (None)
 
+
 def do_deploy(archive_path):
     ''' distributes an archive to my web servers '''
     if (not path.exists(archive_path)):
         return (False)
 
-    
     try:
         put(archive_path, '/tmp/')
         folder_path = "/data/web_static/releases/"+archive_path[9:-4]+"/"
         run('mkdir -p '+folder_path)
-        run('tar -xzf /tmp/'+archive_path[9:]+' -C '+folder_path)
+        run('tar -zxvf /tmp/'+archive_path[9:]+' -C '+folder_path)
         run('rm /tmp/'+archive_path[9:])
         run('mv '+folder_path+"web_static/* "+folder_path)
         run('rm -rf '+folder_path+'web_static')
