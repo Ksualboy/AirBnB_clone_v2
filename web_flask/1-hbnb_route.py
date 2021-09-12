@@ -10,6 +10,7 @@ def root():
     ''' puts something '''
     return "Hello HBNB!"
 
+
 @app.route("/hbnb", strict_slashes=False)
 def hbnb():
     ''' same but for hbnb'''
