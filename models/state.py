@@ -14,7 +14,7 @@ class State(BaseModel, Base):
         cities = relationship('City', backref="state",
                               cascade="all, delete-orphan")
 
-    if (getenv("HBNB_TYPE_STORAGE") == "file"):
+    else:
         @property
         def cities(self):
             from models import storage
