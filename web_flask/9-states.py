@@ -9,11 +9,11 @@ app = Flask(__name__)
 
 @app.route('/states', strict_slashes=False)
 @app.route('/states/<id>', strict_slashes=False)
-def states(id = None):
+def mystates(id=None):
     '''AAAAAAAAAAAAAA'''
     all_states = storage.all(State)
     if id:
-        xd = '{}.{}'.format(State, id)
+        xd = '{}.{}'.format('State', id)
         if xd in all_states:
             all_states = all_states[xd]
         else:
